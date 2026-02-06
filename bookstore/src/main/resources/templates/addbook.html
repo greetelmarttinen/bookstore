@@ -10,6 +10,14 @@
 <body>
     <h1>Bookstore</h1>
     <h4>Add new Book</h4>
+    <!--form-->
+    <form method="post" action="#" th:action="@{/savebook}" th:object="${book}">
+        <input type="text" th:field="${book.author}" placeholder="Author">
+        <input type="text" th:field="${book.title}" placeholder="Title">
+        <input type="text" th:field="${book.isbn}" placeholder="ISBN">
+        <input type="text" th:field="${book.publicationYear}" placeholder="Publication year">
+        <button type="submit">Add book</button>
+    </form>
 
 </body>
 
