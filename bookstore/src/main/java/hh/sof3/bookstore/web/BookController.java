@@ -38,6 +38,7 @@ public class BookController {
     @GetMapping("/addbook")
     public String addBook(Model model) {
         model.addAttribute("book", new Book());
+        // täällä tehdään tyhjä kirja
         return "addbook"; // addbook.html
     }
 
@@ -53,6 +54,30 @@ public class BookController {
     public String deleteBook(@PathVariable("id") Long bookId, Model model) {
         bookRepository.deleteById(bookId);
         return "redirect:../booklist"; // booklist.html
+    }
+
+    // edit book
+    @GetMapping("/edit/{id}")
+    // book haetaan repositoriosta ja laitetaan modeliin
+    public String editBook(@PathVariable("id") Long bookId, Model model) {
+        // Spring HAKEE url:ista OLEMASSA OLEVAN KIRJAN ID:n perusteella ja tallentaa
+        // sen muuttujaan bookId
+        // --> tällä tiedetään mitä muuttujaa halutaan muokata
+        // lisätään se modeliin näkymää (view) varten
+
+        Book book = bookRepository.findById(bookId).orElse(null);
+        // bookRepository.findById --> hakee kirjan tietokannasta id:n perusteella
+        // palautuu "laatikko", jossa kirja joko on tai ei
+        // .orElse(null) --> ottaa book ulos laatikosta
+        // Book book --> tallennetaan book -olioksi, jota thymeleaf voi käyttää
+
+        model.addAttribute("book", book);
+        // lisätään NYKYINEN book -olio modeliin
+        // --> lomakenäkymään, jossa kentät on TÄYTETTY VALMIIKSI (thymeleaf ominaisuus)
+        // --> käyttäjä voi MUOKATA niitä
+
+        return "addbook";
+        // palautetaan addbook.html -näkymä, jossa kirjan tietoja voi muokata
     }
 
 }
