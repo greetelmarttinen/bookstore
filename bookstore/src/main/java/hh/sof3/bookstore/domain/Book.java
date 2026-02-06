@@ -1,6 +1,17 @@
 package hh.sof3.bookstore.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
+// table name is book
 public class Book {
+
+    @Id // PK column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long bookId;
 
     private String title;
     private String author;
@@ -8,6 +19,7 @@ public class Book {
     private Integer isbn;
     private double price;
 
+    // no-argument construktor
     public Book() {
         this.title = null;
         this.author = null;
@@ -16,6 +28,7 @@ public class Book {
         this.price = 0;
     }
 
+    // parameterized constructor
     public Book(String title, String author, Integer publicationYear, Integer isbn, double price) {
         this.title = title;
         this.author = author;
