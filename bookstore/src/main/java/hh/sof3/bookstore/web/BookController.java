@@ -76,7 +76,7 @@ public class BookController {
         // --> lomakenäkymään, jossa kentät on TÄYTETTY VALMIIKSI (thymeleaf ominaisuus)
         // --> käyttäjä voi MUOKATA niitä
 
-        return "addbook";
+        return "editbook";
         // palautetaan addbook.html -näkymä, jossa kirjan tietoja voi muokata
     }
 
