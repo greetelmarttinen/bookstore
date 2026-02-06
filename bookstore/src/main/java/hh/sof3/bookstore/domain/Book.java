@@ -21,6 +21,7 @@ public class Book {
 
     // no-argument construktor
     public Book() {
+        this.bookId = null;
         this.title = null;
         this.author = null;
         this.publicationYear = 0;
@@ -38,6 +39,10 @@ public class Book {
     }
 
     // getters
+    public Long getBookId() {
+        return bookId;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -59,6 +64,10 @@ public class Book {
     }
 
     // setters
+    public void setBookId(Long bookId) {
+        this.bookId = bookId;
+    }
+
     public void setTitle(String title) {
         this.title = title;
     }
