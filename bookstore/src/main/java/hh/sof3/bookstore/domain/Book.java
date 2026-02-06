@@ -10,7 +10,7 @@ import jakarta.persistence.Id;
 public class Book {
 
     @Id // PK column
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long bookId;
 
     private String title;
