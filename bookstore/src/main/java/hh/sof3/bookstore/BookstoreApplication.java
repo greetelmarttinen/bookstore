@@ -19,13 +19,9 @@ public class BookstoreApplication {
 	@Bean
 	public CommandLineRunner createDemoRows(BookRepository bookRepository) {
 		return (args) -> {
-			// bookRepository.save(new Book("A Farewell to Arms", "Ernest Hemingway", 1929,
-			// 1232323 - 21, 23.50));
-			// bookRepository.save(new Book("Animal Farm", "George Orwell", 1945, 2212343 -
-			// 5, 35.00));
+			bookRepository.save(new Book("A Farewell to Arms", "Ernest Hemingway", 1929, 123232321, 23.50));
+			bookRepository.save(new Book("Animal Farm", "George Orwell", 1945, 221234367, 35.00));
 
-			bookRepository.save(new Book("Clean Code", "Robert Martin", 2008, 2212343 - 5, 40.85));
-			bookRepository.save(new Book("Spring in Action", "Craig Walls", 2021, 123456 - 5, 34.99));
 		};
 	}
 

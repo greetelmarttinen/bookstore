@@ -25,7 +25,7 @@ public class Book {
         this.author = null;
         this.publicationYear = 0;
         this.isbn = 0;
-        this.price = 0;
+        this.price = 0.00;
     }
 
     // parameterized constructor

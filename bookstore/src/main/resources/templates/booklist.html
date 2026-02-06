@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.thymeleaf.org">
 
 
 <head>
@@ -10,7 +10,21 @@
 
 <body>
     <h1>Bookstore</h1>
-    <p>Tervetuloa kirjakauppaan!</p>
+    <h4>List of Books</h4>
+    <table>
+        <tr> <!-- table row-->
+            <th>Author</th> <!--table header-->
+            <th>Title</th>
+            <th>ISBN</th>
+            <th>Year</th>
+        </tr>
+        <tr th:each="book : ${books} ">
+            <td th:text="${book.author}"></td>
+            <td th:text="${book.title}"></td>
+            <td th:text="${book.isbn}"></td>
+            <td th:text="${book.publicationYear}"></td>
+        </tr>
+    </table>
 
 </body>
 

@@ -16,8 +16,15 @@ public class BookController {
         this.bookRepository = bookRepository;
     }
 
-    @GetMapping("/index")
+    // @GetMapping("/index")
+    // public String getBooks(Model model) {
+    // return "booklist"; // booklist.html
+    // }
+
+    // booklist from database
+    @GetMapping("/booklist")
     public String getBooks(Model model) {
+        model.addAttribute("books", bookRepository.findAll());
         return "booklist"; // booklist.html
     }
 
