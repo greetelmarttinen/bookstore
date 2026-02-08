@@ -19,8 +19,8 @@
                 <th>Title</th>
                 <th>ISBN</th>
                 <th>Year</th>
-                <th type="hidden"></th>
-                <th type="hidden"></th>
+                <th type="hidden"></th> <!-- lisäsin nämä piilotettuina, jotta tabel -elementtiin-->
+                <th type="hidden"></th> <!-- tulee saman pituinen alaviiva kuin muilla tabel row:lla -->
             </tr>
             <tr th:each="book : ${books} ">
                 <td th:text="${book.author}"></td>
