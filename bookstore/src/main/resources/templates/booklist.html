@@ -6,33 +6,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bookstore</title>
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 </head>
 
 <body>
-    <h1>Bookstore</h1>
-    <h4>List of Books</h4>
-    <table>
-        <tr> <!-- table row-->
-            <th>Author</th> <!--table header-->
-            <th>Title</th>
-            <th>ISBN</th>
-            <th>Year</th>
-        </tr>
-        <tr th:each="book : ${books} ">
-            <td th:text="${book.author}"></td>
-            <td th:text="${book.title}"></td>
-            <td th:text="${book.isbn}"></td>
-            <td th:text="${book.publicationYear}"></td>
-            <!-- delete "button"/ link-->
-            <td><a th:href="@{/delete/{id}(id = ${book.bookId})}">Delete</a></td>
-            <!-- edit functionality -->
-            <!-- lähettää kirjan id:n controlleriin-->
-            <td> <a th:href="@{/edit/{id} (id = ${book.bookId})}">Edit</a></td>
-        </tr>
-    </table>
-    <!-- add book "button" / link-->
-    <a href="/addbook">Add book</a>
-
+    <div class="container">
+        <h1>Bookstore</h1>
+        <h4>List of Books</h4>
+        <table class="table table-striped">
+            <tr> <!-- table row-->
+                <th>Author</th> <!--table header-->
+                <th>Title</th>
+                <th>ISBN</th>
+                <th>Year</th>
+                <th type="hidden"></th>
+                <th type="hidden"></th>
+            </tr>
+            <tr th:each="book : ${books} ">
+                <td th:text="${book.author}"></td>
+                <td th:text="${book.title}"></td>
+                <td th:text="${book.isbn}"></td>
+                <td th:text="${book.publicationYear}"></td>
+                <!-- delete "button"/ link-->
+                <td><a class="btn btn-danger" th:href="@{/delete/{id}(id = ${book.bookId})}">Delete</a></td>
+                <!-- edit functionality -->
+                <!-- lähettää kirjan id:n controlleriin-->
+                <td> <a class="btn btn-secondary" th:href="@{/edit/{id} (id = ${book.bookId})}">Edit</a>
+                </td>
+            </tr>
+        </table>
+        <!-- add book "button" / link-->
+        <a class="btn btn-success" href="/addbook">Add book</a>
+    </div>
 </body>
 
 </html>
