@@ -4,9 +4,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 // table name is book
+// owner table
 public class Book {
 
     @Id // PK column
@@ -19,23 +22,24 @@ public class Book {
     private Integer isbn;
     private double price;
 
+    @ManyToOne
+    // id links to database
+    @JoinColumn(name = "categoryid")
+    // links to Category object in JPA
+    private Category category;
+
     // no-argument construktor
     public Book() {
-        this.bookId = null;
-        this.title = null;
-        this.author = null;
-        this.publicationYear = 0;
-        this.isbn = 0;
-        this.price = 0.00;
     }
 
     // parameterized constructor
-    public Book(String title, String author, Integer publicationYear, Integer isbn, double price) {
+    public Book(String title, String author, Integer publicationYear, Integer isbn, double price, Category category) {
         this.title = title;
         this.author = author;
         this.publicationYear = publicationYear;
         this.isbn = isbn;
         this.price = price;
+        this.category = category;
     }
 
     // getters
@@ -86,6 +90,15 @@ public class Book {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    // getters and setters for category
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     // toString

@@ -9,16 +9,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import hh.sof3.bookstore.domain.Book;
 import hh.sof3.bookstore.domain.BookRepository;
+import hh.sof3.bookstore.domain.CategoryRepository;
 
 @Controller
 public class BookController {
 
+    // constructor injection
+    public BookController(BookRepository bookRepository, CategoryRepository categoryRepository) {
+        this.bookRepository = bookRepository;
+        this.categoryRepository = categoryRepository;
+    }
+
+    // book repository
     private BookRepository bookRepository;
 
-    // constructor injection
-    public BookController(BookRepository bookRepository) {
-        this.bookRepository = bookRepository;
-    }
+    // category repository
+    private CategoryRepository categoryRepository;
 
     // @GetMapping("/index")
     // public String getBooks(Model model) {
@@ -39,6 +45,9 @@ public class BookController {
     public String addBook(Model model) {
         model.addAttribute("book", new Book());
         // täällä tehdään tyhjä kirja
+
+        // fetches all categorys from database
+        model.addAttribute("category", categoryRepository.findAll());
         return "addbook"; // addbook.html
     }
 
