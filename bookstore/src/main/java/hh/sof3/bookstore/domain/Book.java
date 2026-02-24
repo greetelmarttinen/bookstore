@@ -24,9 +24,12 @@ public class Book {
 
     @ManyToOne
     // id links to database
+    // book manytoone category
     @JoinColumn(name = "categoryid")
+    // FK
     // links to Category object in JPA
     private Category category;
+    // attribuutin luokkatietotyyppi category -olioon
 
     // getters and setters for category
     public Category getCategory() {

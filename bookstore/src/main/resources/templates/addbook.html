@@ -33,9 +33,13 @@
                     </div>
 
                     <div class="col">
+                        <!-- dropdown -->
                         <select id="categorylist" th:field="${book.category}" class="form-select">
                             <option th:each="category: ${category}" th:value="${category.categoryid}"
                                 th:text="${category.name}"></option>
+                            <!-- käydään jokainen olio yksitellen läpi th:each:illa (tietokannasta)-->
+                            <!-- haetaan kategoriaolion id -->
+                            <!-- tulostetaan id:tä vastaava nimi -->
                         </select>
                     </div>
 

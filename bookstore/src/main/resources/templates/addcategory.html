@@ -14,11 +14,14 @@
         <h1>Bookstore</h1>
         <h4>Add new category</h4>
 
-        <!--form-->
-        <form action="#" method="post" th:action="@{/savecategory}" th:object="${category}">
-            <input type="text" th:field="${category.name}" placeholder="Category">
-            <button class="btn btn-success" type="submit">Add category</button>
-        </form>
+        <div class="table table-striped">
+            <!--form-->
+            <form action="#" method="post" th:action="@{/savecategory}" th:object="${category}">
+                <input type="text" th:field="${category.name}" placeholder="Category">
+                <button class="btn btn-success" type="submit">Add category</button>
+            </form>
+        </div>
+
 
     </div>
 

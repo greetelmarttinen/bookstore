@@ -36,15 +36,16 @@ public class BookstoreApplication {
 		return (args) -> {
 
 			log.info("Save some sample categories ");
-			categoryRepository.save(new Category("Scifi"));
-			categoryRepository.save(new Category("Comic"));
-			categoryRepository.save(new Category("Science"));
+			Category category1 = new Category("Scifi");
+			categoryRepository.save(category1);
+			Category category2 = new Category("Comic");
+			categoryRepository.save(category2);
+			Category category3 = new Category("Science");
+			categoryRepository.save(category3);
 
 			log.info("Save some sample books ");
-			bookRepository.save(new Book("A Farewell to Arms", "Ernest Hemingway", 1929, 123232321, 23.50,
-					categoryRepository.findByName("Science").get(0)));
-			bookRepository.save(new Book("Animal Farm", "George Orwell", 1945, 221234367, 35.00,
-					categoryRepository.findByName("Scifi").get(0)));
+			bookRepository.save(new Book("A Farewell to Arms", "Ernest Hemingway", 1929, 123232321, 23.50, category1));
+			bookRepository.save(new Book("Animal Farm", "George Orwell", 1945, 221234367, 35.00, category2));
 
 		};
 	}
