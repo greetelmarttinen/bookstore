@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookstore</title>
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+
+<body>
+    <div class="container">
+        <h1>Bookstore</h1>
+        <h4>List of Categories</h4>
+        <table class="table table-striped">
+            <tr> <!-- table row-->
+                <th>Name</th> <!--table header-->
+                <th type="hidden"></th>
+            </tr>
+            <tr th:each="category : ${categories} ">
+                <td th:text="${category.name}"></td>
+                <!-- delete "button"/ link-->
+                <td><a class="btn btn-danger" th:href="@{/deletecategory/{id}(id = ${category.categoryid})}">Delete</a>
+                </td>
+            </tr>
+        </table>
+        <!-- add category "button" / link-->
+        <a class="btn btn-success" href="/addcategory">Add category</a>
+    </div>
+
+</body>
+
+</html>

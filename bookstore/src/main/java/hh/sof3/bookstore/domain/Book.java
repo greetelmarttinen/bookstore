@@ -28,6 +28,15 @@ public class Book {
     // links to Category object in JPA
     private Category category;
 
+    // getters and setters for category
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
     // no-argument construktor
     public Book() {
     }
@@ -90,15 +99,6 @@ public class Book {
 
     public void setPrice(double price) {
         this.price = price;
-    }
-
-    // getters and setters for category
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
     }
 
     // toString
