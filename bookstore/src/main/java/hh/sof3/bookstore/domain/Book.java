@@ -1,5 +1,7 @@
 package hh.sof3.bookstore.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,6 +24,8 @@ public class Book {
     private Integer isbn;
     private double price;
 
+    @JsonIgnoreProperties("books")
+    // ignoring "books" attribute for category
     @ManyToOne
     // id links to database
     // book manytoone category

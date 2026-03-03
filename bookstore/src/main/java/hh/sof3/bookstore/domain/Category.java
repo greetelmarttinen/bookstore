@@ -2,6 +2,8 @@ package hh.sof3.bookstore.domain;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,6 +20,9 @@ public class Category {
     private Long categoryid;
 
     private String name;
+
+    @JsonIgnoreProperties("category")
+    // ignoring "category" attribute for all books
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
     // linking type is list of books
