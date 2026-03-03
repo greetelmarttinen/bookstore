@@ -32,6 +32,12 @@
 	<!-- dependencies-->
 	<dependencies>
 	<!-- DATABASE-->
+		<!-- Data REST depency-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-rest</artifactId>
+		</dependency>
+
 		<!-- JPA depency-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
