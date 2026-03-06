@@ -6,14 +6,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bookstore login</title>
+    <link rel="stylesheet" href="/default-ui.css">
 </head>
 
 <body>
+    <div th:if="${param.error}">Invalid username and password</div>
+    <div th:if="${param.logout}">You have been logged out</div>
 
-    <form th:action="@{/login}" method="post">
-        <div><label>User Name: <input type="text" name="username" /></div>
-        <div><label>Password: <input type="password" name="password" /></div>
-        <div><input type="submit" value="Sign in" /></div>
+    <form class="login-form" th:action="@{/login}" method="post">
+        <h2>Sign in</h2>
+        <div>
+            <p>
+                <label for="username" class="screenreader">Username</label>
+                <input type="text" name="username" placeholder="Username" required autofocut />
+            </p>
+        </div>
+        <div>
+            <p>
+                <label for="password" class="screenreader">Password</label>
+                <input type="password" name="password" placeholder="Password" required />
+            </p>
+        </div>
+        <div><button class="primary" type="submit">Sign in</button></div>
     </form>
 
 </body>

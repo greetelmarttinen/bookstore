@@ -31,6 +31,12 @@ public class BookController {
     // return "booklist"; // booklist.html
     // }
 
+    // login page
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+
     // booklist from database
     @GetMapping("/booklist")
     public String getBooks(Model model) {
