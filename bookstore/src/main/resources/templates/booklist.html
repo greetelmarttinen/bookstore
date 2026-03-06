@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
 
 <head>
@@ -13,6 +13,14 @@
 <body>
     <div class="container">
         <h1>Bookstore</h1>
+
+        <br>
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign out">
+        </form>
+        <br>
+        <h2>Hello <span sec:authentication="name"></span>!</h2>
+
         <h4>List of Books</h4>
         <table class="table table-striped">
             <tr> <!-- table row-->
@@ -32,7 +40,8 @@
                 <!-- category dropdown-->
                 <td th:text="${book.category} ? ${book.category.name} : ''"></td>
                 <!-- delete "button"/ link-->
-                <td><a class="btn btn-danger" th:href="@{/delete/{id}(id = ${book.bookId})}">Delete</a></td>
+                <td sec:authorize="hasRole ('ADMIN')"><a class="btn btn-danger"
+                        th:href="@{/delete/{id}(id = ${book.bookId})}">Delete</a></td>
                 <!-- edit functionality -->
                 <!-- lähettää kirjan id:n controlleriin-->
                 <td> <a class="btn btn-secondary" th:href="@{/edit/{id} (id = ${book.bookId})}">Edit</a>

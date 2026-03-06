@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
 <head>
     <meta charset="UTF-8">
@@ -27,6 +27,7 @@
                 <input type="password" name="password" placeholder="Password" required />
             </p>
         </div>
+        <div><input type="hidden" name="_csrf" value="d63f746f-c5f6-4cc6-99c0-9220ff784b23" /></div>
         <div><button class="primary" type="submit">Sign in</button></div>
     </form>
 
