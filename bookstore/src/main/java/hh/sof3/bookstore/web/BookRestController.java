@@ -1,6 +1,7 @@
 package hh.sof3.bookstore.web;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,12 +25,13 @@ public class BookRestController {
     @GetMapping("/books")
     public @ResponseBody List<Book> findAllBookdRest() {
         return (List<Book>) bookRepository.findAll();
+        // ^ pakotettu titeotyyppimuunnos
     }
 
     // RESTful service to find ONE BOOK BY ID
     @GetMapping("/books/{id}")
-    public @ResponseBody Book findBookRest(@PathVariable("id") Long bookId) {
-        return bookRepository.findById(bookId).get();
+    public @ResponseBody Optional<Book> findBookRest(@PathVariable("id") Long bookId) {
+        return bookRepository.findById(bookId);
     }
 
 }

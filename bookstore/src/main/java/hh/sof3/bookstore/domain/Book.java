@@ -26,6 +26,8 @@ public class Book {
 
     @JsonIgnoreProperties("books")
     // ignoring "books" attribute for category
+    // avoids infinite loop during JSON serialization
+    // kirjan kaikista tiedoista ignorataan/ohitetaan category-attribuuttitieto
     @ManyToOne
     // id links to database
     // book manytoone category
