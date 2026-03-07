@@ -17,13 +17,7 @@ import hh.sof3.bookstore.domain.Category;
 @SpringBootApplication
 public class BookstoreApplication {
 
-	private final CategoryRepository categoryRepository;
-
 	private static final Logger log = LoggerFactory.getLogger(BookstoreApplication.class);
-
-	BookstoreApplication(CategoryRepository categoryRepository) {
-		this.categoryRepository = categoryRepository;
-	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(BookstoreApplication.class, args);
@@ -47,6 +41,15 @@ public class BookstoreApplication {
 			bookRepository.save(new Book("A Farewell to Arms", "Ernest Hemingway", 1929, 123232321, 23.50, category1));
 			bookRepository.save(new Book("Animal Farm", "George Orwell", 1945, 221234367, 35.00, category2));
 
+			log.info("Fetch all the categories");
+			for (Category category : categoryRepository.findAll()) {
+				log.info(category.toString());
+			}
+
+			log.info("Fetch all the books");
+			for (Book book : bookRepository.findAll()) {
+				log.info(book.toString());
+			}
 		};
 	}
 
