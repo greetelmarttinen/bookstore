@@ -1,11 +1,10 @@
 package hh.sof3.bookstore.domain;
 
-import org.springframework.data.annotation.Id;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity(name = "users")
 public class User {
@@ -23,6 +22,23 @@ public class User {
     @Column(name = "role", nullable = false)
     private String role;
 
+    // no-argument construktor
+    public User() {
+
+    }
+
+    // parameterized constructor
+    public User(String username, String passwordHash, String role) {
+        this.username = username;
+        this.passwordHash = passwordHash;
+        this.role = role;
+    }
+
+    // getters
+    public Long getId() {
+        return id;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -33,6 +49,28 @@ public class User {
 
     public String getRole() {
         return role;
+    }
+
+    // setters
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    @Override
+    public String toString() {
+        return "User [id=" + id + ", username=" + username + ", passwordHash=" + passwordHash + ", role=" + role + "]";
     }
 
 }

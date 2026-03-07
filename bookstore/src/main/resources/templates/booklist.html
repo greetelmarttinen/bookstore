@@ -13,13 +13,12 @@
 <body>
     <div class="container">
         <h1>Bookstore</h1>
-
         <br>
+        <h2>Hello <span sec:authentication="name"></span>!</h2>
         <form th:action="@{/logout}" method="post">
             <input type="submit" value="Sign out">
         </form>
         <br>
-        <h2>Hello <span sec:authentication="name"></span>!</h2>
 
         <h4>List of Books</h4>
         <table class="table table-striped">
