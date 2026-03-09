@@ -5,8 +5,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
-@Entity(name = "users")
+@Entity
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,6 +21,9 @@ public class User {
     @Column(name = "password", nullable = false)
     private String passwordHash;
 
+    @Column(name = "email", nullable = false)
+    private String email;
+
     @Column(name = "role", nullable = false)
     private String role;
 
@@ -28,9 +33,10 @@ public class User {
     }
 
     // parameterized constructor
-    public User(String username, String passwordHash, String role) {
+    public User(String username, String passwordHash, String email, String role) {
         this.username = username;
         this.passwordHash = passwordHash;
+        this.email = email;
         this.role = role;
     }
 
@@ -45,6 +51,10 @@ public class User {
 
     public String getPasswordHash() {
         return passwordHash;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public String getRole() {
@@ -62,6 +72,10 @@ public class User {
 
     public void setPasswordHash(String passwordHash) {
         this.passwordHash = passwordHash;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setRole(String role) {

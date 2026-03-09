@@ -1,7 +1,8 @@
 package hh.sof3.bookstore;
 
 import hh.sof3.bookstore.domain.CategoryRepository;
-
+import hh.sof3.bookstore.domain.User;
+import hh.sof3.bookstore.domain.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,7 +18,13 @@ import hh.sof3.bookstore.domain.Category;
 @SpringBootApplication
 public class BookstoreApplication {
 
+	private final UserRepository userRepository;
+
 	private static final Logger log = LoggerFactory.getLogger(BookstoreApplication.class);
+
+	BookstoreApplication(UserRepository userRepository) {
+		this.userRepository = userRepository;
+	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(BookstoreApplication.class, args);
@@ -40,6 +47,14 @@ public class BookstoreApplication {
 			log.info("Save some sample books ");
 			bookRepository.save(new Book("A Farewell to Arms", "Ernest Hemingway", 1929, 123232321, 23.50, category1));
 			bookRepository.save(new Book("Animal Farm", "George Orwell", 1945, 221234367, 35.00, category2));
+
+			// create users: admin, user
+			User user1 = new User("user", "$2a$10$NByaJ1KBpR4TOHZBxrjWXeg2zti.GfKN5Wf49EbR9uqorCumYFQii",
+					"user@email.com", "USER");
+			User user2 = new User("admin", "$2a$10$PrwRGTCiUc3sIceUfUuj2uV1GXWBEcJrkGPz57HOl.9hj5FKQq66q",
+					"admin@email.com", "ADMIN");
+			userRepository.save(user1);
+			userRepository.save(user2);
 
 			log.info("Fetch all the categories");
 			for (Category category : categoryRepository.findAll()) {

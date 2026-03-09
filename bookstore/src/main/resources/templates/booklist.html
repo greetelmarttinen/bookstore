@@ -39,7 +39,7 @@
                 <!-- category dropdown-->
                 <td th:text="${book.category} ? ${book.category.name} : ''"></td>
                 <!-- delete "button"/ link-->
-                <td sec:authorize="hasRole ('ADMIN')"><a class="btn btn-danger"
+                <td sec:authorize="hasAuthority ('ADMIN')"><a class="btn btn-danger"
                         th:href="@{/delete/{id}(id = ${book.bookId})}">Delete</a></td>
                 <!-- edit functionality -->
                 <!-- lähettää kirjan id:n controlleriin-->
