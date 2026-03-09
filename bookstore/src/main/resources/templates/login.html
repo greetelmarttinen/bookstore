@@ -10,26 +10,28 @@
 </head>
 
 <body>
-    <div th:if="${param.error}">Invalid username and password</div>
-    <div th:if="${param.logout}">You have been logged out</div>
+    <div class="container">
 
-    <form class="login-form" th:action="@{/login}" method="post">
-        <h2>Sign in</h2>
-        <div>
-            <p>
-                <label for="username" class="screenreader">Username</label>
-                <input type="text" name="username" placeholder="Username" required autofocut />
-            </p>
-        </div>
-        <div>
-            <p>
-                <label for="password" class="screenreader">Password</label>
-                <input type="password" name="password" placeholder="Password" required />
-            </p>
-        </div>
-        <div><input type="hidden" name="_csrf" value="d63f746f-c5f6-4cc6-99c0-9220ff784b23" /></div>
-        <div><button class="primary" type="submit">Sign in</button></div>
-    </form>
+        <form class="login-form" th:action="@{/login}" method="post">
+            <h2>Sign in</h2>
+            <div th:if="${param.error}">Invalid username or password</div>
+            <div th:if="${param.logout}">You have been logged out</div>
+            <div>
+                <p>
+                    <label for="username" class="screenreader">Username</label>
+                    <input type="text" name="username" placeholder="Username" required autofocut />
+                </p>
+            </div>
+            <div>
+                <p>
+                    <label for="password" class="screenreader">Password</label>
+                    <input type="password" name="password" placeholder="Password" required />
+                </p>
+            </div>
+            <div><input type="hidden" name="_csrf" value="d63f746f-c5f6-4cc6-99c0-9220ff784b23" /></div>
+            <div><button class="primary" type="submit">Sign in</button></div>
+        </form>
+    </div>
 
 </body>
 

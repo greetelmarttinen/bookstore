@@ -33,7 +33,6 @@ public class WebSecurityConfig {
                                                 .anyRequest()
                                                 .authenticated())
                                 .formLogin(formlogin -> formlogin
-                                                .loginPage("/login")
                                                 .defaultSuccessUrl("/booklist", true)
                                                 .permitAll())
                                 .logout(logout -> logout

@@ -33,10 +33,10 @@ public class BookController {
     // }
 
     // login page
-    @GetMapping("/login")
-    public String login() {
-        return "login";
-    }
+    // @GetMapping("/login")
+    // public String login() {
+    // return "login";
+    // }
 
     // booklist from database
     @GetMapping("/booklist")
