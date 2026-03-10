@@ -53,8 +53,11 @@ public class BookstoreApplication {
 					"user@email.com", "USER");
 			User user2 = new User("admin", "$2a$10$PrwRGTCiUc3sIceUfUuj2uV1GXWBEcJrkGPz57HOl.9hj5FKQq66q",
 					"admin@email.com", "ADMIN");
+			User user3 = new User("user2", "$2a$10$obhq3Fl/ir1GlJOZWBqBeO1kZELUpiWQtfeweNDM6kmEzhWCMxz3O",
+					"user2@email.com", "USER");
 			userRepository.save(user1);
 			userRepository.save(user2);
+			userRepository.save(user3);
 
 			log.info("Fetch all the categories");
 			for (Category category : categoryRepository.findAll()) {
