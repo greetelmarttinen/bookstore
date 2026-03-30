@@ -1,12 +1,11 @@
 package hh.sof3.bookstore;
 
 import static org.assertj.core.api.Assertions.assertThat;
-
+import org.springframework.boot.data.jpa.test.autoconfigure.DataJpaTest;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import hh.sof3.bookstore.domain.Book;
 import hh.sof3.bookstore.domain.BookRepository;
@@ -41,6 +40,13 @@ public class BookRepositoryTest {
     // testi: kirjan haku
     @Test
     public void findBookByTitle() {
+
+        Category category = new Category("Fiction");
+        categoryRepository.save(category);
+
+        Book book = new Book("Harry Potter", "J.K. Rowling", 2015, 123456, 23.99, category);
+        bookRepository.save(book);
+
         List<Book> books = bookRepository.findByTitle("Harry Potter");
         assertThat(books).hasSize(1);
         assertThat(books.get(0).getAuthor()).isEqualTo("J.K. Rowling");
